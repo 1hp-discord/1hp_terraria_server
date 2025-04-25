@@ -111,6 +111,35 @@ docker-compose down
 - **World Not Loading**: Ensure the world file specified in `serverconfig.txt` exists in the correct `worlds` directory.
 - **Mod Issues**: For tModLoader, ensure mods are compatible with your tModLoader version.
 
+If you dont have docker/docker-compose
+```zsh
+# 1. Update existing list of packages
+sudo apt-get update
+
+# 2. Install required packages to allow apt to use a repository over HTTPS
+sudo apt-get install -y \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+# 3. Add Docker’s official GPG key
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+# 4. Set up the Docker repository
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# 5. Update the package index again
+sudo apt-get update
+
+# 6. Install Docker Engine, CLI, and containerd
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
 ---
 
 ## Credits

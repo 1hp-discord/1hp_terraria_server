@@ -1,6 +1,6 @@
 world=/terraria/worlds/1hp.wld
-motd=Welcome to TShock + TModLoader!
-difficulty=1
+motd=Welcome to 1hp's Terraria Server!
+difficulty=2
 players=100
 password=
 language=1

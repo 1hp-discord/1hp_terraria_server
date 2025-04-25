@@ -9,12 +9,12 @@ services:
       - "./tshock/worlds:/terraria/worlds"
     restart: unless-stopped
 
-  tmod:
-    build: ./tmodloader
-    container_name: terraria_tmod
-    # We'll run this server on port 7778 to avoid conflict with TShock
-    ports:
-      - "7778:7778"
-    volumes:
-      - "./tmodloader/worlds:/terraria/worlds"
-    restart: unless-stopped
+  # tmod:
+  #   build: ./tmodloader
+  #   container_name: terraria_tmod
+  #   # We'll run this server on port 7778 to avoid conflict with TShock
+  #   ports:
+  #     - "7778:7778"
+  #   volumes:
+  #     - "./tmodloader/worlds:/terraria/worlds"
+  #   restart: unless-stopped

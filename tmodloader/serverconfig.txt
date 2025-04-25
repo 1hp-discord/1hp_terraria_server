@@ -1,5 +1,5 @@
-world=/tmodloader/worlds/MyModdedWorld.wld
-motd=Welcome to tModLoader + Docker!
+world=/tmodloader/worlds/1hp.wld
+motd=Welcome to 1hp's Terraria Server!
 difficulty=1
 players=100
 password=
