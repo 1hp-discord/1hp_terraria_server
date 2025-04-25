@@ -140,6 +140,25 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
+Add port 7777 to your firewall
+- If on windows
+1. Go to windows firewall
+2. Add New firewall rule
+  1. port 7777
+  2. Apply to tcp
+  3. Specify port 7777
+  4. Specify networking types
+    - Domain
+    - Private
+    - Public
+  5. Name it `terraria-server-ingress-tcp`
+  6. Repeat steps 1-5 but rename `tcp` to `udp`
+
+- If on Linux
+```
+sudo ufw allow 7777/tcp
+sudo ufw allow 7777/udp
+```
 ---
 
 ## Credits
