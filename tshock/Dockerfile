@@ -66,6 +66,7 @@ RUN wget https://github.com/Pryaxis/TShock/releases/download/v5.2.3/TShock-5.2.3
 RUN mkdir -p /terraria/worlds /terraria/tshock
 COPY serverconfig.txt /terraria/serverconfig.txt
 COPY config/config.json /terraria/tshock/config.json
+COPY config/groups.json /terraria/tshock/groups.json
 
 # -------------------------------
 # 6) Expose port and set entrypoint

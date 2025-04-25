@@ -27,9 +27,9 @@
 
       "InfiniteInvasion": false,
       "PvPMode": "normal",
-      "SpawnProtection": true,
+      "SpawnProtection": false,
       "SpawnProtectionRadius": 10,
-      "RangeChecks": true,
+      "RangeChecks": false,
       "HardcoreOnly": false,
       "MediumcoreOnly": false,
       "SoftcoreOnly": false,
@@ -93,27 +93,27 @@
       "BCryptWorkFactor": 7,
       "DisableUUIDLogin": false,
       "KickEmptyUUID": false,
-      "TilePaintThreshold": 0,
+      "TilePaintThreshold": 10000,
 
       "KickOnTilePaintThresholdBroken": false,
       "MaxDamage": 10000,
       "MaxProjDamage": 10000,
 
       "KickOnDamageThresholdBroken": false,
-      "TileKillThreshold": 0,
+      "TileKillThreshold": 10000,
 
       "KickOnTileKillThresholdBroken": false,
-      "TilePlaceThreshold": 0,
+      "TilePlaceThreshold": 10000,
 
       "KickOnTilePlaceThresholdBroken": false,
-      "TileLiquidThreshold": 0,
+      "TileLiquidThreshold": 10000,
 
       "KickOnTileLiquidThresholdBroken": false,
       "ProjIgnoreShrapnel": true,
-      "ProjectileThreshold": 0,
+      "ProjectileThreshold": 10000,
 
       "KickOnProjectileThresholdBroken": false,
-      "HealOtherThreshold": 0,
+      "HealOtherThreshold": 10000,
 
       "KickOnHealOtherThresholdBroken": false,
       "SuppressPermissionFailureNotices": false,

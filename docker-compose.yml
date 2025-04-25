@@ -9,6 +9,7 @@ services:
     volumes:
       - "./tshock/worlds:/terraria/worlds"
       - "./tshock/config/config.json:/terraria/tshock/config.json"
+      - "./tshock/config/groups.json:/terraria/tshock/groups.json"
     restart: unless-stopped
 
   # tmod:

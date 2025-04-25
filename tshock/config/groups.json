@@ -1,0 +1,24 @@
+[
+  {
+    "Name": "default",
+    "Permissions": [
+      "tshock.tp.wormhole",
+      "tshock.tp.magicconch",
+      "tshock.tp.demonconch",
+      "tshock.tp.pylon",
+      "tshock.tp.rod"
+    ],
+    "ChatColor": "white",
+    "Prefix": "",
+    "Suffix": ""
+  },
+  {
+    "Name": "newadmin",
+    "Permissions": [
+      "tshock.admin.*"
+    ],
+    "ChatColor": "red",
+    "Prefix": "(Admin) ",
+    "Suffix": ""
+  }
+] 
