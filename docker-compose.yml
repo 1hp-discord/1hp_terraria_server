@@ -5,8 +5,10 @@ services:
     container_name: terraria_tshock
     ports:
       - "7777:7777"
+      - "7878:7878"  # TShock REST API port
     volumes:
       - "./tshock/worlds:/terraria/worlds"
+      - "./tshock/config:/terraria/tshock/config"
     restart: unless-stopped
 
   # tmod:

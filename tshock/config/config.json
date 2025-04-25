@@ -1,0 +1,19 @@
+{
+  "ServerPort": 7777,
+  "MaxSlots": 100,
+  "ServerPassword": "",
+  "LogPath": "tshock",
+  "DebugLogs": true,
+  "InvasionMultiplier": 2,
+  "DefaultMaximumSpawns": 20,
+  "DefaultSpawnRate": 200,
+  "TileKillThreshold": 0,
+  "TilePlaceThreshold": 0,
+  "TileLiquidThreshold": 0,
+  "ProjectileThreshold": 0,
+  "HealOtherThreshold": 0,
+  "EnableGeoIP": true,
+  "RestApiEnabled": true,
+  "LogRest": true,
+  "EnableTokenEndpointAuthentication": true
+} 

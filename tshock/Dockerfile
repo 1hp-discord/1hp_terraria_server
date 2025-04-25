@@ -63,22 +63,27 @@ RUN wget https://github.com/Pryaxis/TShock/releases/download/v5.2.3/TShock-5.2.3
 # -------------------------------
 # 5) Prepare world directory and copy config
 # -------------------------------
-RUN mkdir -p /terraria/worlds
+RUN mkdir -p /terraria/worlds /terraria/tshock/config
 COPY serverconfig.txt /terraria/serverconfig.txt
+COPY config /terraria/tshock/config
 
 # -------------------------------
 # 6) Expose port and set entrypoint
 # -------------------------------
 EXPOSE 7777
+# Expose REST API port
+EXPOSE 7878
 
 # We set up an ENTRYPOINT that runs the TShock server with desired arguments.
 # -maxplayers 100 sets the max at 100. Adjust as needed.
 # Add -autocreate 1 (small world) to generate if it doesn't exist
+# -configpath sets where TShock should look for its configuration files
 ENTRYPOINT [ \
   "./TShock.Server", \
   "-config", "serverconfig.txt", \
   "-port", "7777", \
   "-maxplayers", "100", \
   "-worldpath", "/terraria/worlds", \
+  "-configpath", "/terraria/tshock", \
   "-autocreate", "1" \
 ]
