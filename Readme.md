@@ -170,7 +170,3 @@ sudo ufw allow 7777/udp
 ---
 
 Feel free to open issues or PRs for improvements!
-
----
-
-Let me know if you want this saved as a `README.md` file in your project.

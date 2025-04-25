@@ -8,7 +8,7 @@ services:
       - "7878:7878"  # TShock REST API port
     volumes:
       - "./tshock/worlds:/terraria/worlds"
-      - "./tshock/config:/terraria/tshock/config"
+      - "./tshock/config/config.json:/terraria/tshock/config.json"
     restart: unless-stopped
 
   # tmod:
