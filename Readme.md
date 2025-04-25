@@ -32,8 +32,8 @@ This repository provides a ready-to-use Docker Compose setup for running both a 
 ### 1. Clone the Repository
 
 ```sh
-git clone <your-repo-url>
-cd <your-repo-directory>
+git clone https://github.com/JonTDean/1hp_terraria_server
+cd 1hp_terraria_server
 ```
 
 ### 2. (Optional) Customize Server Configs
