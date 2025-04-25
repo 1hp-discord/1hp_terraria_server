@@ -1,0 +1,6 @@
+world=/tmodloader/worlds/MyModdedWorld.wld
+motd=Welcome to tModLoader + Docker!
+difficulty=1
+players=100
+password=
+language=1
