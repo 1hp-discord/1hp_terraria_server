@@ -6,19 +6,53 @@
       "tshock.tp.magicconch",
       "tshock.tp.demonconch",
       "tshock.tp.pylon",
-      "tshock.tp.rod"
+      "tshock.tp.rod",
+      "oa.greet",
+      "vote.player.vote",
+      "mse.tp"
     ],
     "ChatColor": "white",
     "Prefix": "",
     "Suffix": ""
   },
   {
-    "Name": "newadmin",
+    "Name": "moderator",
     "Permissions": [
-      "tshock.admin.*"
+      "tshock.tp.*",
+      "oa.greet",
+      "oa.mod",
+      "vote.player.startvote",
+      "vote.player.vote",
+      "mse.tp",
+      "mse.back",
+      "mse.list"
+    ],
+    "ChatColor": "green",
+    "Prefix": "[Mod] ",
+    "Suffix": ""
+  },
+  {
+    "Name": "admin",
+    "Permissions": [
+      "tshock.*",
+      "oa.*",
+      "vote.*",
+      "mse.*"
     ],
     "ChatColor": "red",
-    "Prefix": "(Admin) ",
+    "Prefix": "[Admin] ",
+    "Suffix": ""
+  },
+  {
+    "Name": "wheel",
+    "Permissions": [
+      "tshock.admin.ban",
+      "tshock.admin.kick",
+      "tshock.admin.mute",
+      "tshock.admin.kill"
+    ],
+    "ChatColor": "white",
+    "Prefix": "",
     "Suffix": ""
   }
 ] 

@@ -1,0 +1,15 @@
+{
+  "DiscordToken": "",
+  "DiscordPrefix": "!",
+  "ChannelId": "",
+  "EnableDiscordChat": true,
+  "EnableServerChat": true,
+  "EnableJoinLeaveMessages": true,
+  "EnableDeathMessages": true,
+  "EnableAchievementMessages": true,
+  "EnableInvasionMessages": true,
+  "EnableBossMessages": true,
+  "DiscordChatPrefix": "[Discord]",
+  "ServerChatPrefix": "[Server]",
+  "HexColors": true
+} 

@@ -61,7 +61,33 @@ RUN wget https://github.com/Pryaxis/TShock/releases/download/v5.2.3/TShock-5.2.3
     && rm tshock.zip /terraria/TShock-Beta-linux-x64-Release.tar
 
 # -------------------------------
-# 5) Prepare world directory and copy config
+# 5) Download and install plugins
+# -------------------------------
+RUN mkdir -p /terraria/ServerPlugins
+
+# Download and install Crossplay
+RUN wget https://github.com/RenderBr/Crossplay/releases/latest/download/Crossplay.dll -O /terraria/ServerPlugins/Crossplay.dll
+
+# Download and install MultiServerChat
+RUN wget https://github.com/RenderBr/MultiServerChat/releases/latest/download/MultiServerChat.dll -O /terraria/ServerPlugins/MultiServerChat.dll
+
+# Download and install OnlineAnnounceV2
+RUN wget https://github.com/Maxthegreat99/OnlineAnnounceV2/releases/latest/download/OnlineAnnounceV2.dll -O /terraria/ServerPlugins/OnlineAnnounceV2.dll
+
+# Download and install TCR-TerrariaChatRelay
+RUN wget https://github.com/RenderBr/TCR-TerrariaChatRelay/releases/latest/download/TCR.dll -O /terraria/ServerPlugins/TCR.dll
+
+# Download and install Vote
+RUN wget https://github.com/RenderBr/Vote/releases/latest/download/Vote.dll -O /terraria/ServerPlugins/Vote.dll
+
+# Download and install MultiSEngine
+RUN wget https://github.com/Megghy/MultiSEngine/releases/latest/download/MultiSEngine.dll -O /terraria/ServerPlugins/MultiSEngine.dll
+
+# Download and install AutoTeam
+RUN wget https://github.com/TerraTrapezium/AutoTeam/releases/latest/download/AutoTeam.dll -O /terraria/ServerPlugins/AutoTeam.dll
+
+# -------------------------------
+# 6) Prepare world directory and copy config
 # -------------------------------
 RUN mkdir -p /terraria/worlds /terraria/tshock
 COPY serverconfig.txt /terraria/serverconfig.txt
@@ -69,7 +95,7 @@ COPY config/config.json /terraria/tshock/config.json
 COPY config/groups.json /terraria/tshock/groups.json
 
 # -------------------------------
-# 6) Expose port and set entrypoint
+# 7) Expose port and set entrypoint
 # -------------------------------
 EXPOSE 7777
 # Expose REST API port

@@ -1,0 +1,6 @@
+{
+  "ExecutiveGroup": "wheel",
+  "MaxAwaitingVotingTime": 60,
+  "MaxAwaitingReasonTime": 30,
+  "ShowResult": true
+} 

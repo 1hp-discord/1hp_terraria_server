@@ -10,6 +10,11 @@ services:
       - "./tshock/worlds:/terraria/worlds"
       - "./tshock/config/config.json:/terraria/tshock/config.json"
       - "./tshock/config/groups.json:/terraria/tshock/groups.json"
+      - "./tshock/plugins:/terraria/ServerPlugins"
+      - "./tshock/config/autoteam.json:/terraria/tshock/autoteam.json"
+      - "./tshock/config/tcr.json:/terraria/tshock/tcr.json"
+      - "./tshock/config/vote.json:/terraria/tshock/vote.json"
+      - "./tshock/config/multisengine.json:/terraria/tshock/multisengine.json"
     restart: unless-stopped
 
   # tmod:

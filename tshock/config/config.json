@@ -4,8 +4,8 @@
       "ServerPort": 7777,
       "MaxSlots": 100,
       "ReservedSlots": 20,
-      "ServerName": "",
-      "UseServerName": false,
+      "ServerName": "1HP TShock Server",
+      "UseServerName": true,
       "LogPath": "tshock/logs",
       "DebugLogs": true,
 
@@ -21,9 +21,9 @@
       "SaveWorldOnLastPlayerExit": true,
       "InvasionMultiplier": 2,
 
-      "DefaultMaximumSpawns": 20,
+      "DefaultMaximumSpawns": 100,
 
-      "DefaultSpawnRate": 200,
+      "DefaultSpawnRate": 600,
 
       "InfiniteInvasion": false,
       "PvPMode": "normal",
@@ -38,7 +38,7 @@
       "DisableDungeonGuardian": false,
       "DisableClownBombs": false,
       "DisableSnowBalls": false,
-      "DisableTombstones": true,
+      "DisableTombstones": false,
       "DisablePrimeBombs": false,
       "ForceTime": "normal",
       "DisableInvisPvP": false,
@@ -70,7 +70,8 @@
       "GiveItemsDirectly": false,
       "DefaultRegistrationGroupName": "default",
       "DefaultGuestGroupName": "guest",
-      "RememberLeavePos": false,
+      "RememberLeavePos": true,
+
       "MaximumLoginAttempts": 3,
       "KickOnMediumcoreDeath": false,
       "MediumcoreKickReason": "Death results in a kick",
@@ -85,8 +86,10 @@
       "HardcoreKickReason": "Death results in a kick",
       "BanOnHardcoreDeath": false,
       "HardcoreBanReason": "Death results in a ban",
-      "KickProxyUsers": true,
-      "RequireLogin": false,
+      "KickProxyUsers": false,
+
+      "RequireLogin": true,
+      
       "AllowLoginAnyUsername": true,
       "AllowRegisterAnyUsername": false,
       "MinimumPasswordLength": 4,
@@ -136,7 +139,7 @@
       "DisplayIPToAdmins": false,
       "ChatFormat": "{1}{2}{3}: {4}",
       "ChatAboveHeadsFormat": "{2}",
-      "EnableChatAboveHeads": false,
+      "EnableChatAboveHeads": true,
       "BroadcastRGB": [
         127,
         255,
