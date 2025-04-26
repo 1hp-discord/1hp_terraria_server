@@ -1,6 +1,32 @@
 {
+  "ListenIP": "0.0.0.0",
+  "ListenPort": 7778,
+  "ServerName": "1HP MultiSEngine",
+  "ServerVersion": 244,
   "Token": "vY9QsK7JvLQi0i7BOBf7",
-  "AllowBackCommand": true,
-  "EnableSSCSync": true,
-  "SendPlayerDataToOtherServers": true
+  "SwitchTimeOut": 5000,
+  "SwitchToDefaultServerOnJoin": true,
+  "EnableCrossplayFeature": true,
+  "RestoreDataWhenJoinNonSSC": true,
+  "DefaultServer": "main",
+  "Servers": [
+    {
+      "Visible": true,
+      "Name": "main",
+      "IP": "127.0.0.1",
+      "Port": 7777,
+      "SpawnX": -1,
+      "SpawnY": -1,
+      "VersionNum": 244
+    },
+    {
+      "Visible": true,
+      "Name": "corruption",
+      "IP": "127.0.0.1",
+      "Port": 7779,
+      "SpawnX": -1,
+      "SpawnY": -1,
+      "VersionNum": 244
+    }
+  ]
 } 

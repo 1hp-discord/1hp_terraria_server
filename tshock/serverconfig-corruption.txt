@@ -1,0 +1,16 @@
+world=./worlds/1hp_corruption.wld
+worldpath=./worlds
+autocreate=3
+difficulty=0
+worldname=1hp_corruption
+seed=
+worldsizex=12200
+worldsizey=6200
+maxplayers=100
+port=7777
+password=
+motd=Welcome to 1HP Corruption World!
+secure=1
+language=en-US
+upnp=0
+banlist=banlist.txt 

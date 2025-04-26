@@ -61,35 +61,14 @@ RUN wget https://github.com/Pryaxis/TShock/releases/download/v5.2.3/TShock-5.2.3
     && rm tshock.zip /terraria/TShock-Beta-linux-x64-Release.tar
 
 # -------------------------------
-# 5) Download and install plugins
+# 5) Set up plugin directory and copy plugins from host
 # -------------------------------
 RUN mkdir -p /terraria/ServerPlugins
-
-# Download and install Crossplay
-RUN wget https://github.com/RenderBr/Crossplay/releases/latest/download/Crossplay.dll -O /terraria/ServerPlugins/Crossplay.dll
-
-# Download and install MultiServerChat
-RUN wget https://github.com/RenderBr/MultiServerChat/releases/latest/download/MultiServerChat.dll -O /terraria/ServerPlugins/MultiServerChat.dll
-
-# Download and install OnlineAnnounceV2
-RUN wget https://github.com/Maxthegreat99/OnlineAnnounceV2/releases/latest/download/OnlineAnnounceV2.dll -O /terraria/ServerPlugins/OnlineAnnounceV2.dll
-
-# Download and install TCR-TerrariaChatRelay
-RUN wget https://github.com/RenderBr/TCR-TerrariaChatRelay/releases/latest/download/TCR.dll -O /terraria/ServerPlugins/TCR.dll
-
-# Download and install Vote
-RUN wget https://github.com/RenderBr/Vote/releases/latest/download/Vote.dll -O /terraria/ServerPlugins/Vote.dll
-
-# Download and install MultiSEngine
-RUN wget https://github.com/Megghy/MultiSEngine/releases/latest/download/MultiSEngine.dll -O /terraria/ServerPlugins/MultiSEngine.dll
-
-# Download and install AutoTeam
-RUN wget https://github.com/TerraTrapezium/AutoTeam/releases/latest/download/AutoTeam.dll -O /terraria/ServerPlugins/AutoTeam.dll
 
 # -------------------------------
 # 6) Prepare world directory and copy config
 # -------------------------------
-RUN mkdir -p /terraria/worlds /terraria/tshock
+RUN mkdir -p /terraria/worlds /terraria/tshock /terraria/logs
 COPY serverconfig.txt /terraria/serverconfig.txt
 COPY config/config.json /terraria/tshock/config.json
 COPY config/groups.json /terraria/tshock/groups.json
@@ -104,11 +83,15 @@ EXPOSE 7878
 # We set up an ENTRYPOINT that runs the TShock server with desired arguments.
 # -maxplayers 100 sets the max at 100. Adjust as needed.
 # -configpath sets where TShock should look for its configuration files
+# -logpath sets where logs should be saved
+# -logformat sets the format of the log files with date and time
 ENTRYPOINT [ \
   "./TShock.Server", \
   "-config", "serverconfig.txt", \
   "-port", "7777", \
   "-maxplayers", "100", \
   "-worldpath", "/terraria/worlds", \
-  "-autocreate", "1" \
+  "-autocreate", "1", \
+  "-logpath", "/terraria/logs", \
+  "-logformat", "server_log_{0:yyyy-MM-dd_HH-mm-ss}.log" \
 ]

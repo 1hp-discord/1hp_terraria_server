@@ -2,7 +2,7 @@ version: '3.8'
 services:
   tshock:
     build: ./tshock
-    container_name: terraria_tshock
+    container_name: terraria_crimson_tshock
     ports:
       - "7777:7777"
       - "7878:7878"  # TShock REST API port
@@ -15,7 +15,36 @@ services:
       - "./tshock/config/tcr.json:/terraria/tshock/tcr.json"
       - "./tshock/config/vote.json:/terraria/tshock/vote.json"
       - "./tshock/config/multisengine.json:/terraria/tshock/multisengine.json"
+      - "./tshock/logs:/terraria/logs"
     restart: unless-stopped
+
+  corruption:
+    build: ./tshock
+    container_name: terraria_tshock_corruption
+    ports:
+      - "7779:7777"  # Different external port to avoid conflict
+    volumes:
+      - "./tshock/worlds:/terraria/worlds"
+      - "./tshock/config/config.json:/terraria/tshock/config.json"
+      - "./tshock/config/groups.json:/terraria/tshock/groups.json"
+      - "./tshock/plugins:/terraria/ServerPlugins"
+      - "./tshock/config/autoteam.json:/terraria/tshock/autoteam.json"
+      - "./tshock/config/tcr.json:/terraria/tshock/tcr.json"
+      - "./tshock/config/vote.json:/terraria/tshock/vote.json"
+      - "./tshock/config/multisengine.json:/terraria/tshock/multisengine.json"
+      - "./tshock/logs:/terraria/logs"
+      - "./tshock/serverconfig-corruption.txt:/terraria/serverconfig.txt"
+    restart: unless-stopped
+    command: [
+      "./TShock.Server",
+      "-world", "/terraria/worlds/1hp_corruption.wld",
+      "-autocreate", "3",
+      "-worldname", "1hp_corruption",
+      "-maxplayers", "100",
+      "-port", "7777",
+      "-logpath", "/terraria/logs",
+      "-logformat", "corruption_log_{0:yyyy-MM-dd_HH-mm-ss}.log"
+    ]
 
   # tmod:
   #   build: ./tmodloader
