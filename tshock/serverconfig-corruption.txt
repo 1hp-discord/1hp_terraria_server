@@ -1,7 +1,7 @@
 world=./worlds/1hp_corruption.wld
 worldpath=./worlds
 autocreate=3
-difficulty=0
+difficulty=2
 worldname=1hp_corruption
 seed=
 worldsizex=12200
@@ -13,4 +13,6 @@ motd=Welcome to 1HP Corruption World!
 secure=1
 language=en-US
 upnp=0
-banlist=banlist.txt 
+banlist=banlist.txt
+logformat=corruption_log_{0:yyyy-MM-dd_HH-mm-ss}.log
+rememberleavepos=true 

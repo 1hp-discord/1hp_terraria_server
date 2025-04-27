@@ -8,12 +8,12 @@
   "SwitchToDefaultServerOnJoin": true,
   "EnableCrossplayFeature": true,
   "RestoreDataWhenJoinNonSSC": true,
-  "DefaultServer": "main",
+  "DefaultServer": "crimson",
   "Servers": [
     {
       "Visible": true,
-      "Name": "main",
-      "IP": "127.0.0.1",
+      "Name": "crimson",
+      "IP": "terraria_crimson_tshock",
       "Port": 7777,
       "SpawnX": -1,
       "SpawnY": -1,
@@ -22,8 +22,8 @@
     {
       "Visible": true,
       "Name": "corruption",
-      "IP": "127.0.0.1",
-      "Port": 7779,
+      "IP": "terraria_tshock_corruption",
+      "Port": 7777,
       "SpawnX": -1,
       "SpawnY": -1,
       "VersionNum": 244

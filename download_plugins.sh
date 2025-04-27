@@ -1,37 +1,41 @@
 #!/bin/bash
 
 PLUGINS_DIR="./tshock/plugins"
-mkdir -p $PLUGINS_DIR
+mkdir -p "$PLUGINS_DIR"
 
-echo "Downloading plugins to $PLUGINS_DIR..."
+# Function to download a file if it doesn't exist or is empty
+download_plugin() {
+    local url="$1"
+    local output="$2"
+    
+    if [ ! -s "$output" ]; then
+        echo "Downloading $output..."
+        curl -L "$url" -o "$output"
+        echo "Downloaded $output"
+    else
+        echo "$output already exists, skipping download"
+    fi
+}
+
+# MultiSEngine (server linking)
+download_plugin "https://github.com/Pryaxis/Plugins/raw/master/1.4.4/MultiSEngine/MultiSEngine.dll" "$PLUGINS_DIR/MultiSEngine.dll"
+
+# TCR (Team Color and Ranks)
+download_plugin "https://github.com/Pryaxis/Plugins/raw/master/1.4.4/TCR/TCR.dll" "$PLUGINS_DIR/TCR.dll"
+
+# Vote system
+download_plugin "https://github.com/Pryaxis/Plugins/raw/master/1.4.4/Vote/Vote.dll" "$PLUGINS_DIR/Vote.dll"
+
+# Auto Team
+if [ ! -s "$PLUGINS_DIR/AutoTeam.dll" ]; then
+    echo "NOTE: AutoTeam.dll already exists but should be checked to ensure compatibility"
+fi
 
 # Crossplay
-echo "Downloading Crossplay..."
-wget -q https://github.com/RenderBr/Crossplay/releases/latest/download/Crossplay.dll -O $PLUGINS_DIR/Crossplay.dll
+download_plugin "https://github.com/Pryaxis/Plugins/raw/master/1.4.4/Crossplay/Crossplay.dll" "$PLUGINS_DIR/Crossplay.dll"
 
-# MultiServerChat
-echo "Downloading MultiServerChat..."
-wget -q https://github.com/RenderBr/MultiServerChat/releases/latest/download/MultiServerChat.dll -O $PLUGINS_DIR/MultiServerChat.dll
+# Multi Server Chat
+download_plugin "https://github.com/Pryaxis/Plugins/raw/master/1.4.4/MultiServerChat/MultiServerChat.dll" "$PLUGINS_DIR/MultiServerChat.dll"
 
-# OnlineAnnounceV2
-echo "Downloading OnlineAnnounceV2..."
-wget -q https://github.com/Maxthegreat99/OnlineAnnounceV2/releases/latest/download/OnlineAnnounceV2.dll -O $PLUGINS_DIR/OnlineAnnounceV2.dll
-
-# TCR-TerrariaChatRelay
-echo "Downloading TCR-TerrariaChatRelay..."
-wget -q https://github.com/RenderBr/TCR-TerrariaChatRelay/releases/latest/download/TCR.dll -O $PLUGINS_DIR/TCR.dll
-
-# Vote
-echo "Downloading Vote..."
-wget -q https://github.com/RenderBr/Vote/releases/latest/download/Vote.dll -O $PLUGINS_DIR/Vote.dll
-
-# MultiSEngine
-echo "Downloading MultiSEngine..."
-wget -q https://github.com/Megghy/MultiSEngine/releases/latest/download/MultiSEngine.dll -O $PLUGINS_DIR/MultiSEngine.dll
-
-# AutoTeam
-echo "Downloading AutoTeam..."
-wget -q https://github.com/TerraTrapezium/AutoTeam/releases/latest/download/AutoTeam.dll -O $PLUGINS_DIR/AutoTeam.dll
-
-echo "All plugins downloaded successfully!"
+echo "All plugins downloaded or verified!"
 echo "Now rebuild and restart your Docker container with: docker-compose up --build -d" 

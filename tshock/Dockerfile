@@ -81,17 +81,12 @@ EXPOSE 7777
 EXPOSE 7878
 
 # We set up an ENTRYPOINT that runs the TShock server with desired arguments.
-# -maxplayers 100 sets the max at 100. Adjust as needed.
 # -configpath sets where TShock should look for its configuration files
 # -logpath sets where logs should be saved
 # -logformat sets the format of the log files with date and time
 ENTRYPOINT [ \
   "./TShock.Server", \
   "-config", "serverconfig.txt", \
-  "-port", "7777", \
-  "-maxplayers", "100", \
-  "-worldpath", "/terraria/worlds", \
-  "-autocreate", "1", \
   "-logpath", "/terraria/logs", \
   "-logformat", "server_log_{0:yyyy-MM-dd_HH-mm-ss}.log" \
 ]

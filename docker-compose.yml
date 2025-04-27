@@ -22,7 +22,7 @@ services:
     build: ./tshock
     container_name: terraria_tshock_corruption
     ports:
-      - "7779:7777"  # Different external port to avoid conflict
+      - "7779:7777"  # Map external 7779 to internal 7777
     volumes:
       - "./tshock/worlds:/terraria/worlds"
       - "./tshock/config/config.json:/terraria/tshock/config.json"
@@ -35,15 +35,25 @@ services:
       - "./tshock/logs:/terraria/logs"
       - "./tshock/serverconfig-corruption.txt:/terraria/serverconfig.txt"
     restart: unless-stopped
-    command: [
+
+  multisengine:
+    build: ./tshock
+    container_name: terraria_multisengine
+    ports:
+      - "7778:7778"  # MultiSEngine port
+    volumes:
+      - "./tshock/worlds:/terraria/worlds"
+      - "./tshock/logs:/terraria/logs"
+      - "./tshock/serverconfig-mse.txt:/terraria/serverconfig.txt"
+    restart: unless-stopped
+    entrypoint: [
       "./TShock.Server",
-      "-world", "/terraria/worlds/1hp_corruption.wld",
+      "-port", "7778",
       "-autocreate", "3",
-      "-worldname", "1hp_corruption",
-      "-maxplayers", "100",
-      "-port", "7777",
+      "-world", "/terraria/worlds/mse_lobby.wld",
+      "-worldname", "mse_lobby",
       "-logpath", "/terraria/logs",
-      "-logformat", "corruption_log_{0:yyyy-MM-dd_HH-mm-ss}.log"
+      "-logformat", "mse_log_{0:yyyy-MM-dd_HH-mm-ss}.log"
     ]
 
   # tmod:

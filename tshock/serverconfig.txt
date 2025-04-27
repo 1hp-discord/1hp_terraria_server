@@ -4,4 +4,5 @@ difficulty=2
 players=100
 password=
 language=1
+rememberleavepos=true
 # TShock-specific config can also be managed via in-game commands
