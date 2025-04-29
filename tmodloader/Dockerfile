@@ -10,47 +10,58 @@ RUN apt-get update && \
         curl \
         lib32gcc-s1 \
         unzip \
+        procps \
+        lsof \
+        xz-utils \
+        mono-complete \
     && rm -rf /var/lib/apt/lists/*
 
 # -------------------------------
-# 2) Install SteamCMD
+# 2) Install .NET Runtime
 # -------------------------------
-RUN mkdir /steamcmd && \
-    cd /steamcmd && \
-    wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz && \
-    tar -xvzf steamcmd_linux.tar.gz && \
-    rm steamcmd_linux.tar.gz
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        apt-transport-https \
+        gnupg \
+    && rm -rf /var/lib/apt/lists/*
 
-ENV STEAMCMD_DIR="/steamcmd"
-ENV PATH="$STEAMCMD_DIR:$PATH"
+RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg && \
+    echo "deb [arch=amd64] https://packages.microsoft.com/debian/11/prod bullseye main" > /etc/apt/sources.list.d/microsoft.list
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        dotnet-runtime-8.0 \
+    && rm -rf /var/lib/apt/lists/*
 
 # -------------------------------
-# 3) Install tModLoader server
-#    tModLoader App ID is 1281930
+# 3) Install tModLoader directly from GitHub
 # -------------------------------
 RUN mkdir -p /tmodloader
 WORKDIR /tmodloader
 
-RUN steamcmd +login anonymous \
-    +force_install_dir /tmodloader \
-    +app_update 1281930 validate \
-    +quit
+# Download latest tModLoader stable release 
+RUN wget -O tmodloader.zip "https://github.com/tModLoader/tModLoader/releases/latest/download/tModLoader.zip" && \
+    unzip tmodloader.zip && \
+    rm tmodloader.zip && \
+    chmod +x start-tModLoaderServer.sh || echo "No direct executables found, will search during runtime"
+
+# Create necessary directories
+RUN mkdir -p /tmodloader/worlds /tmodloader/ModLoader/Mods
 
 # -------------------------------
-# 4) Copy in a default server config if you have one
+# 4) Copy in a default server config
 # -------------------------------
 COPY serverconfig.txt /tmodloader/serverconfig.txt
 
 # -------------------------------
-# 5) Expose port and set entrypoint
-#    We'll run on 7778 to avoid conflict with TShock's 7777
+# 5) Copy and prepare the server script
 # -------------------------------
-EXPOSE 7778
+COPY run-server.sh /tmodloader/run-server.sh
+RUN chmod +x /tmodloader/run-server.sh
 
-ENTRYPOINT [ \
-  "./start-tModLoaderServer.sh", \
-  "-config", "serverconfig.txt", \
-  "-port", "7778", \
-  "-maxplayers", "100", \
-  "-worldpath", "/tmodloader/worlds" \
-]
+# -------------------------------
+# 6) Expose port and set entrypoint
+# -------------------------------
+EXPOSE 7780
+
+ENTRYPOINT ["/tmodloader/run-server.sh"]

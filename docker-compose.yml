@@ -8,15 +8,19 @@ services:
       - "7878:7878"  # TShock REST API port
     volumes:
       - "./tshock/worlds:/terraria/worlds"
-      - "./tshock/config/config.json:/terraria/tshock/config.json"
-      - "./tshock/config/groups.json:/terraria/tshock/groups.json"
-      - "./tshock/plugins:/terraria/ServerPlugins"
-      - "./tshock/config/autoteam.json:/terraria/tshock/autoteam.json"
-      - "./tshock/config/tcr.json:/terraria/tshock/tcr.json"
-      - "./tshock/config/vote.json:/terraria/tshock/vote.json"
-      - "./tshock/config/multisengine.json:/terraria/tshock/multisengine.json"
       - "./tshock/logs:/terraria/logs"
+      - "./tshock/serverconfig.txt:/terraria/serverconfig.txt"
+      # Map entire directories instead of individual files
+      - "./tshock/plugins:/terraria/ServerPlugins"
+      - "./tshock/config:/terraria/tshock"
     restart: unless-stopped
+    entrypoint: [
+      "./TShock.Server",
+      "-port", "7777",
+      "-world", "/terraria/worlds/1hp.wld",
+      "-logpath", "/terraria/logs",
+      "-logformat", "server_log_{0:yyyy-MM-dd_HH-mm-ss}.log"
+    ]
 
   corruption:
     build: ./tshock
@@ -25,13 +29,8 @@ services:
       - "7779:7777"  # Map external 7779 to internal 7777
     volumes:
       - "./tshock/worlds:/terraria/worlds"
-      - "./tshock/config/config.json:/terraria/tshock/config.json"
-      - "./tshock/config/groups.json:/terraria/tshock/groups.json"
       - "./tshock/plugins:/terraria/ServerPlugins"
-      - "./tshock/config/autoteam.json:/terraria/tshock/autoteam.json"
-      - "./tshock/config/tcr.json:/terraria/tshock/tcr.json"
-      - "./tshock/config/vote.json:/terraria/tshock/vote.json"
-      - "./tshock/config/multisengine.json:/terraria/tshock/multisengine.json"
+      - "./tshock/config:/terraria/tshock"
       - "./tshock/logs:/terraria/logs"
       - "./tshock/serverconfig-corruption.txt:/terraria/serverconfig.txt"
     restart: unless-stopped
@@ -44,6 +43,8 @@ services:
     volumes:
       - "./tshock/worlds:/terraria/worlds"
       - "./tshock/logs:/terraria/logs"
+      - "./tshock/plugins:/terraria/ServerPlugins"
+      - "./tshock/config:/terraria/tshock"
       - "./tshock/serverconfig-mse.txt:/terraria/serverconfig.txt"
     restart: unless-stopped
     entrypoint: [
@@ -56,12 +57,13 @@ services:
       "-logformat", "mse_log_{0:yyyy-MM-dd_HH-mm-ss}.log"
     ]
 
-  # tmod:
-  #   build: ./tmodloader
-  #   container_name: terraria_tmod
-  #   # We'll run this server on port 7778 to avoid conflict with TShock
-  #   ports:
-  #     - "7778:7778"
-  #   volumes:
-  #     - "./tmodloader/worlds:/terraria/worlds"
-  #   restart: unless-stopped
+  tmod:
+    build: ./tmodloader
+    container_name: terraria_tmod
+    # We'll run this server on port 7780 as specified in the Dockerfile
+    ports:
+      - "7780:7780"
+    volumes:
+      - "./tmodloader/worlds:/tmodloader/worlds"
+      - "./tmodloader/mods:/tmodloader/ModLoader/Mods"
+    restart: unless-stopped

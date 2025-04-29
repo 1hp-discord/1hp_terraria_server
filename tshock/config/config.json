@@ -5,9 +5,9 @@
       "MaxSlots": 100,
       "ReservedSlots": 20,
       "ServerName": "1HP TShock Server",
-      "UseServerName": true,
+      "UseServerName": false,
       "LogPath": "tshock/logs",
-      "DebugLogs": true,
+      "DebugLogs": false,
 
       "DisableLoginBeforeJoin": false,
       "IgnoreChestStacksOnLoad": false,
@@ -19,12 +19,9 @@
       "BackupKeepFor": 240,
       "SaveWorldOnCrash": true,
       "SaveWorldOnLastPlayerExit": true,
-      "InvasionMultiplier": 2,
-
-      "DefaultMaximumSpawns": 100,
-
-      "DefaultSpawnRate": 600,
-
+      "InvasionMultiplier": 1,
+      "DefaultMaximumSpawns": 10,
+      "DefaultSpawnRate": 700,
       "InfiniteInvasion": false,
       "PvPMode": "normal",
       "SpawnProtection": false,

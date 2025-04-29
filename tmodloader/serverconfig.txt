@@ -1,6 +1,24 @@
-world=/tmodloader/worlds/1hp.wld
-motd=Welcome to 1hp's Terraria Server!
-difficulty=1
-players=100
+world=/tmodloader/worlds/tmodloader.wld
+worldpath=/tmodloader/worlds
+worldname=tModLoader Server
+motd=Welcome to 1HP Terraria tModLoader server!
+
+autocreate=3
+difficulty=2
+
+maxplayers=100
+rememberleavepos=true 
+
+seed=
+worldsizex=12200
+worldsizey=6200
+
+port=7780
+secure=1
 password=
-language=1
+language=en-US
+logformat=corruption_log_{0:yyyy-MM-dd_HH-mm-ss}.log
+banlist=banlist.txt
+upnp=0
+npcstream=60
+priority=1

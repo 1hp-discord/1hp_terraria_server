@@ -61,20 +61,15 @@ RUN wget https://github.com/Pryaxis/TShock/releases/download/v5.2.3/TShock-5.2.3
     && rm tshock.zip /terraria/TShock-Beta-linux-x64-Release.tar
 
 # -------------------------------
-# 5) Set up plugin directory and copy plugins from host
+# 5) Set up directories for mounting volumes
 # -------------------------------
-RUN mkdir -p /terraria/ServerPlugins
+RUN mkdir -p /terraria/ServerPlugins \
+    /terraria/worlds \
+    /terraria/tshock \
+    /terraria/logs
 
 # -------------------------------
-# 6) Prepare world directory and copy config
-# -------------------------------
-RUN mkdir -p /terraria/worlds /terraria/tshock /terraria/logs
-COPY serverconfig.txt /terraria/serverconfig.txt
-COPY config/config.json /terraria/tshock/config.json
-COPY config/groups.json /terraria/tshock/groups.json
-
-# -------------------------------
-# 7) Expose port and set entrypoint
+# 6) Expose ports and set entrypoint
 # -------------------------------
 EXPOSE 7777
 # Expose REST API port
